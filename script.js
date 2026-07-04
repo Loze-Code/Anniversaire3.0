@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (countdown) {
 
-        const eventDate = new Date("2026-09-12T18:30:00").getTime();
+       const eventDate = new Date("2026-09-19T18:30:00").getTime();
 
         function updateCountdown() {
 
@@ -262,4 +262,31 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   typeWriter();
+});
+// ===========================
+// Animation des sections
+// ===========================
+
+const sections = document.querySelectorAll("section");
+
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+            entry.target.classList.add("show-section");
+        }
+
+    });
+
+},{
+    threshold:0.2
+});
+
+sections.forEach(section =>{
+
+    section.classList.add("hidden-section");
+
+    observer.observe(section);
+
 });
